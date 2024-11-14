@@ -37,7 +37,7 @@ const NavPage = ({ children, buttonNav, topNav, title, type }) => {
   } else
     return (
       <div
-        className="border border-red-500 mw[100vw]"
+        className=" mw[100vw]"
         style={{
           height: "100vh",
           overflowY: "scroll",
@@ -46,20 +46,21 @@ const NavPage = ({ children, buttonNav, topNav, title, type }) => {
         }}
       >
         <Navbar fixed={false} topNav={topNav} title={title} type="dashboard" />
-        <div className="">
+        <div>
           <div className="pr-3 pl-3">
             <Stack direction="row" justifyContent="space-between">
               <Sidebar />
-              <Box className="border border-red-500 w-[75%]">
-                <div>
-                  {children}
-                  <BasicModal
-                    handleOpen={handleOpen}
-                    open={open}
-                    setOpen={setOpen}
-                    handleClose={handleClose}
-                  />
-                </div>
+              <Box
+                className="border border-white h-[92.3vh]"
+                sx={{ width: { md: "79%", xs: "100%" } }}
+              >
+                {children}
+                <BasicModal
+                  handleOpen={handleOpen}
+                  open={open}
+                  setOpen={setOpen}
+                  handleClose={handleClose}
+                />
               </Box>
             </Stack>
           </div>

@@ -54,7 +54,7 @@ const Navbar = ({ fixed, type, data, topNav, title }) => {
   //others
   const { data: session } = useSession();
   const [scrollingUp, setScrollingUp] = useState(false);
-
+  
   const changeBackground = () => {
     if (window.scrollY >= 72) {
       setScrollingUp(true);

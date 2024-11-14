@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import Person2Icon from "@mui/icons-material/Person2";
@@ -13,7 +13,59 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
-import { Box } from "@mui/material";
+import { Box, Typography, Stack, Divider } from "@mui/material";
+import Image from "next/image";
+
+import Accordion from "@mui/material/Accordion";
+import AccordionActions from "@mui/material/AccordionActions";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from "@mui/material/Button";
+import { RestaurantContext } from "@context/RestaurantContext";
+
+const AccordionUsage = () => {
+  const { myWallet, formatMoney } = useContext(RestaurantContext);
+  const { data: session } = useSession();
+  return (
+    <div>
+      <Accordion
+        sx={{
+          background: "transparent",
+          boxShadow: "none",
+          color: "white",
+          padding: "0px",
+          margin: "0px",
+        }}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Stack direction="column">
+            <Typography className="text-white">
+              {formatMoney(myWallet?.balance) || 0.0}
+            </Typography>{" "}
+            <Typography
+              sx={{ fontSize: "11px", color: "rgba(255,255,255,.75)" }}
+            >
+              Account Balance
+            </Typography>
+          </Stack>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography
+            className="text-sm"
+            sx={{ color: "rgba(255,255,255,.75)" }}
+          >
+            {session?.user?.email}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+  );
+};
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -21,49 +73,178 @@ const Sidebar = () => {
   const root = pathname.split("/")[1];
   return (
     <>
-      <Box className="h-[93vh] border border-white-500 w-[20%] pt-2">
+      <Box
+        className="h-[92.3vh] rounded-xl"
+        sx={{
+          width: "20%",
+          display: { md: "block", xs: "none" },
+          background: "linear-gradient(20deg,#0d0d0d,  #05286e, #0d0d0d)",
+        }}
+      >
         <div className="px-5 border-white">
-          {root === "user" && (
-            <ul style={{ marginTop: "10px" }}>
-              <div>
-                
-              </div>
-              <li className={`${pathname === "/user" ? "active" : ""}`}>
-                <Link href="/user" style={{ display: "flex" }}>
-                  <HomeIcon sx={{ marginRight: "10px" }} /> <div>Home</div>
+          {session?.user?.role === "user" && (
+            <ul className="mt-2" style={{ marginTop: "10px" }}>
+              <AccordionUsage />
+              <Divider sx={{ background: "rgba(95, 92, 92, 0.75)" }} />
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/donation.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Make a Deposit</div>
                 </Link>
               </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/money-withdrawal.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Withdrawal</div>
+                </Link>
+              </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/check.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Acive Deposits</div>
+                </Link>
+              </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/dollar-symbol.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Account History</div>
+                </Link>
+              </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/pie-chart.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Option Trade</div>
+                </Link>
+              </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/bar-chart.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
 
-              <li className={`${pathname === "/user/orders" ? "active" : ""}`}>
-                <Link href="/user/orders" style={{ display: "flex" }}>
-                  <HomeRepairServiceIcon sx={{ marginRight: "10px" }} />{" "}
-                  <div>My Orders</div>
+                  <div className="text-gray-300">Trading Dashboard</div>
                 </Link>
               </li>
               <li
-                className={`${pathname === "/user/add-fund" ? "active" : ""}`}
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
               >
-                <Link href="/user/add-fund" style={{ display: "flex" }}>
-                  <AccountBalanceWalletIcon sx={{ marginRight: "10px" }} />{" "}
-                  <div>Add Funds</div>
-                </Link>
-              </li>
-              <li className={`${pathname === "/user/rules" ? "active" : ""}`}>
-                <Link href="/user/rules" style={{ display: "flex" }}>
-                  <GavelIcon sx={{ marginRight: "10px" }} /> <div>Rules</div>
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/bar-chart.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Live Trading </div>
                 </Link>
               </li>
               <li
-                // className={`${pathname === "/user/support" ? "active" : ""}`}
-                style={{
-                  borderLeft: `${
-                    pathname === "/user/support" ? "solid #8075ff" : ""
-                  }`,
-                }}
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
               >
-                <Link href="/user/support" style={{ display: "flex" }}>
-                  <SupportAgentIcon sx={{ marginRight: "10px" }} />{" "}
-                  <div>Customer Care</div>
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/hand-shake.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Referral Pogram</div>
+                </Link>
+              </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/chat.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">FAQ</div>
+                </Link>
+              </li>
+              <li
+                className={`${
+                  pathname === "/user" ? "active" : ""
+                } text-white mt-3 mb-3`}
+              >
+                <Link href="/deposit" style={{ display: "flex" }}>
+                  <Image
+                    src="/img/support.png"
+                    alt="deposit"
+                    width={20}
+                    height={20}
+                    className="mr-2"
+                  />
+                  <div className="text-gray-300">Support</div>
                 </Link>
               </li>
             </ul>
@@ -108,7 +289,6 @@ const Sidebar = () => {
             </ul>
           )}
 
-          <h4>Account</h4>
           <ul>
             {/* <li className={pathname === "/dashboard-profile" ? "active" : ""}>
               <Link href="/dashboard-profile">
@@ -127,14 +307,6 @@ const Sidebar = () => {
               </li>
             )}
 
-            {root === "user" && (
-              <li className={`${pathname === "/user/profile" ? "active" : ""}`}>
-                <Link href="/user/profile" style={{ display: "flex" }}>
-                  <Person2Icon sx={{ marginRight: "10px" }} />{" "}
-                  <div>profile</div>
-                </Link>
-              </li>
-            )}
             <li onClick={signOut}>
               <Link href="#" style={{ display: "flex" }}>
                 <LogoutIcon sx={{ marginRight: "10px", color: "red" }} />{" "}
