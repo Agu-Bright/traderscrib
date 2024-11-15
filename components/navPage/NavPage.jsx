@@ -51,7 +51,7 @@ const NavPage = ({ children, buttonNav, topNav, title, type }) => {
             <Stack direction="row" justifyContent="space-between">
               <Sidebar />
               <Box
-                className="border border-white h-[92.3vh]"
+                className="h-[92.3vh]"
                 sx={{ width: { md: "79%", xs: "100%" } }}
               >
                 {children}

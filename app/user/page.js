@@ -21,6 +21,9 @@ import Image from "next/image";
 import { RestaurantContext } from "@context/RestaurantContext";
 import TradingViewWidget from "@components/TradingViewWidget";
 import TradingPairWidget from "@components/TradingPairWidget";
+import MarketNews from "@components/MarketNews";
+import MyOrder from "@components/MyOrder";
+import Buy from "@components/Buy";
 
 const Topic = ({ title, src }) => {
   return (
@@ -34,20 +37,6 @@ const Topic = ({ title, src }) => {
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [categories, setCategories] = useState([]);
-  const { myWallet, formatMoney, setSideBar2, setGlobalCat } =
-    useContext(RestaurantContext);
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/api/logs/getCategories");
-        setCategories(data?.categories);
-        setGlobalCat(data?.categories);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
 
   if (status === "loading") {
     return (
@@ -61,7 +50,7 @@ export default function Home() {
           background: "#161722",
         }}
       >
-        <CircularProgress style={{ color: "white" }} />
+        <CircularProgress className="text-gray-400" />
       </div>
     );
   }
@@ -72,7 +61,6 @@ export default function Home() {
     return (
       <NavPage>
         <Box sx={{ height: "100%" }}>
-          {/* <TradingViewWidget /> */}
           <Stack direction="row" justifyContent="space-between">
             <Box
               sx={{
@@ -149,34 +137,19 @@ export default function Home() {
                   </Box>
                 </Box>
               </Stack>
-              <Stack className="mt-2" direction={{ md: "row", xs: "column" }}>
-                <Box
-                  sx={{
-                    width: { md: "33%", xs: "100%" },
-                    border: "1px solid red",
-                  }}
-                >
-                  hii
-                </Box>
-                <Box
-                  sx={{
-                    width: { md: "33%", xs: "100%" },
-                    border: "1px solid red",
-                  }}
-                >
-                  hii
-                </Box>
-                <Box
-                  sx={{
-                    width: { md: "33%", xs: "100%" },
-                    border: "1px solid red",
-                  }}
-                >
-                  hii
-                </Box>
+              <Stack
+                className="mt-2"
+                direction={{ md: "row", xs: "column" }}
+                justifyContent="space-between"
+              >
+                <MyOrder />
+                <Buy title="Buy" />
+                <Buy title="Sell" />
               </Stack>
             </Box>
-            <Box sx={{ border: "1px solid white", width: "34%" }}>hii </Box>
+            <Box sx={{ border: "1px solid white", width: "34%" }}>
+              <MarketNews />{" "}
+            </Box>
           </Stack>
         </Box>
       </NavPage>
