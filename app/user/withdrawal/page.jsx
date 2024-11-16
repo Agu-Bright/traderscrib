@@ -43,14 +43,14 @@ export default function Home() {
           <Stack direction="column" justifyContent="space-between">
             <Box className="flex align-middle ">
               <Image
-                src="/img/donation.png"
+                src="/img/money-withdrawal.png"
                 alt="deposit"
                 width={50}
                 height={50}
                 className="mr-2"
               />
               <Typography className="text-white text-2xl">
-                Make a Deposit
+                Withdrawal{" "}
               </Typography>
             </Box>
             <Box className="w-[100%] mt-4">
@@ -58,17 +58,11 @@ export default function Home() {
                 direction={{ md: "row", xs: "column" }}
                 justifyContent="space-between"
               >
-                <Box sx={{ width: { md: "32%", xs: "100%" } }}>
-                  <Card title="SELECT INVESTMENT PLAN" type="investment" />
+                <Box sx={{ width: { md: "48%", xs: "100%", height: "50vh" } }}>
+                  <Card title="ACCOUNT BALANCE" type="balance" />
                 </Box>
-                <Box sx={{ width: { md: "32%", xs: "100%" } }}>
-                  <Card
-                    title="SELECT PAYMENT AND ENETER AMOUNT"
-                    type="payment"
-                  />
-                </Box>
-                <Box sx={{ width: { md: "32%", xs: "100%" } }}>
-                  <Card title="CRYPTO CURRENCY MARKET PRICES" type="market" />
+                <Box sx={{ width: { md: "48%", xs: "100%", height: "50vh" } }}>
+                  <Card title="MAKE WITHDRAWAL" type="withdrawal" />
                 </Box>
               </Stack>
             </Box>

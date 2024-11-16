@@ -21,9 +21,9 @@ import Image from "next/image";
 import { RestaurantContext } from "@context/RestaurantContext";
 import TradingViewWidget from "@components/TradingViewWidget";
 import TradingPairWidget from "@components/TradingPairWidget";
-import MarketNews from "@components/MarketNews";
 import MyOrder from "@components/MyOrder";
 import Buy from "@components/Buy";
+import MarketNews from "@components/MarketNews";
 
 const Topic = ({ title, src }) => {
   return (
@@ -70,7 +70,7 @@ export default function Home() {
               }}
             >
               <Stack
-                direction="row"
+                direction={{ md: "row", xs: "column" }}
                 sx={{ height: "63vh" }}
                 justifyContent="space-between"
               >
@@ -148,7 +148,8 @@ export default function Home() {
               </Stack>
             </Box>
             <Box sx={{ border: "1px solid white", width: "34%" }}>
-              <MarketNews />{" "}
+              <Typography className="text-white">hii</Typography>
+              <MarketNews />
             </Box>
           </Stack>
         </Box>

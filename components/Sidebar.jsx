@@ -91,7 +91,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/investment" style={{ display: "flex" }}>
                   <Image
                     src="/img/donation.png"
                     alt="deposit"
@@ -107,7 +107,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/withdrawal" style={{ display: "flex" }}>
                   <Image
                     src="/img/money-withdrawal.png"
                     alt="deposit"
@@ -123,7 +123,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/deposits" style={{ display: "flex" }}>
                   <Image
                     src="/img/check.png"
                     alt="deposit"
