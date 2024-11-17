@@ -15,7 +15,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import { Box, Typography, Stack, Divider } from "@mui/material";
 import Image from "next/image";
-
 import Accordion from "@mui/material/Accordion";
 import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -139,7 +138,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/account_history" style={{ display: "flex" }}>
                   <Image
                     src="/img/dollar-symbol.png"
                     alt="deposit"
@@ -171,7 +170,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user" style={{ display: "flex" }}>
                   <Image
                     src="/img/bar-chart.png"
                     alt="deposit"
