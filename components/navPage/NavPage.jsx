@@ -52,7 +52,7 @@ const NavPage = ({ children, buttonNav, topNav, title, type }) => {
               <Sidebar />
               <Box
                 className="h-[92.3vh]"
-                sx={{ width: { md: "79%", xs: "100%" } }}
+                sx={{ width: { md: "79%", xs: "100%" }, marginBottom:"20px" }}
               >
                 {children}
                 <BasicModal

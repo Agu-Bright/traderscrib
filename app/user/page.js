@@ -60,7 +60,7 @@ export default function Home() {
   } else
     return (
       <NavPage>
-        <Box sx={{ height: "100%" }}>
+        <Box sx={{ height: "100%", paddingBottom: "15px" }}>
           <Stack direction="row" justifyContent="space-between">
             <Box
               sx={{
@@ -147,8 +147,14 @@ export default function Home() {
                 <Buy title="Sell" />
               </Stack>
             </Box>
-            <Box sx={{ border: "1px solid white", width: "34%" }}>
-              <Typography className="text-white">hii</Typography>
+            <Box
+              sx={{
+                borderRadius: "10px",
+                width: "34%",
+                background:
+                  "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)",
+              }}
+            >
               <MarketNews />
             </Box>
           </Stack>

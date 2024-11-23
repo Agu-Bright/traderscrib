@@ -12,15 +12,15 @@ const MarketNews = () => {
       const script = document.createElement("script");
       script.id = scriptId;
       script.src =
-        "https://s3.tradingview.com/external-embedding/embed-widget-market-news.js";
+        "https://s3.tradingview.com/external-embedding/embed-widget-timeline.js";
       script.async = true;
 
       // Widget configuration
       script.innerHTML = JSON.stringify({
-        colorTheme: "light",
+        colorTheme: "dark",
         isTransparent: true,
         width: "100%",
-        height: "600",
+        height: "100%",
         locale: "en",
       });
 
