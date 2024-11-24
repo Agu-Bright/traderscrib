@@ -7,10 +7,22 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import { RestaurantContext } from "@context/RestaurantContext";
 import ErrorIcon from "@mui/icons-material/Error";
 import TableComponent from "./Table";
+import { Bounce } from "react-toastify"; // Import the Bounce transition if it's provided by your toast library
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const Card = ({ title, type }) => {
-  const [active, setActive] = useState("ultimate1");
-  const { myWallet, formatMoney } = useContext(RestaurantContext);
+  const [active, setActive] = useState("beginner");
+  const {
+    myWallet,
+    formatMoney,
+    setPlan,
+    setCoin,
+    setAmount,
+    setIndex,
+    coin,
+    amount,
+  } = useContext(RestaurantContext);
   if (type === "investment")
     return (
       <Box
@@ -43,16 +55,19 @@ const Card = ({ title, type }) => {
             }}
           >
             <Box
-              onClick={() => setActive("ultimate1")}
+              onClick={() => {
+                setActive("beginner");
+                setPlan("beginner");
+              }}
               sx={{
                 border: `0.1px solid ${
-                  active === "ultimate1" ? "#00ACAC" : "white"
+                  active === "beginner" ? "#00ACAC" : "white"
                 }`,
               }}
               className=" rounded-xl mt-4 p-2 bg-[#2A2A4C] cursor-pointer"
             >
               <Typography className="text-white text-center ">
-                Ultimate
+                Beginner
               </Typography>
               <Typography className="text-white text-center ">
                 Referal Bonus 5%
@@ -67,7 +82,10 @@ const Card = ({ title, type }) => {
               justifyContent="space-between"
             >
               <Box
-                onClick={() => setActive("pro")}
+                onClick={() => {
+                  setActive("pro");
+                  setPlan("pro");
+                }}
                 sx={{
                   border: `0.1px solid ${
                     active === "pro" ? "#00ACAC" : "white"
@@ -84,10 +102,13 @@ const Card = ({ title, type }) => {
                 </Typography>
               </Box>{" "}
               <Box
-                onClick={() => setActive("ultimate2")}
+                onClick={() => {
+                  setActive("ultimate");
+                  setPlan("ultimate");
+                }}
                 sx={{
                   border: `0.1px solid ${
-                    active === "ultimate2" ? "#00ACAC" : "white"
+                    active === "ultimate" ? "#00ACAC" : "white"
                   }`,
                 }}
                 className="rounded-xl p-2 bg-[#2A2A4C] ml-1 cursor-pointer"
@@ -143,16 +164,18 @@ const Card = ({ title, type }) => {
                 <select
                   style={{ width: "100%", background: "#4D4D6C" }}
                   className="rounded-2xl text-white py-2"
+                  value={coin}
+                  onChange={(e) => setCoin(e.target.value)}
                 >
-                  <option>Bitcoin</option>
-                  <option>Litecoin </option>
-                  <option>Dogecoin </option>
-                  <option>Etherium </option>
-                  <option>Bitcoin Cash </option>
-                  <option>Dash </option>
-                  <option>USDT TRC20 </option>
-                  <option>Tron </option>
-                  <option>USTC ERC20 </option>
+                  <option value="bitcoin">Bitcoin</option>
+                  <option value="litecoin">Litecoin </option>
+                  <option value="dogecoin">Dogecoin </option>
+                  <option value="etherium">Etherium </option>
+                  <option value="bitcoin-cash">Bitcoin Cash </option>
+                  <option value="dash">Dash </option>
+                  <option value="usdt-trc20">USDT TRC20 </option>
+                  <option value="tron">Tron </option>
+                  <option value="usd-erc20">USDT ERC20 </option>
                 </select>
               </Box>
 
@@ -169,6 +192,8 @@ const Card = ({ title, type }) => {
                   <input
                     className="py-1"
                     type="number"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                     style={{ width: "100%", background: "transparent" }}
                     placeholder="Enter amount 10 - 250000"
                   />
@@ -177,6 +202,38 @@ const Card = ({ title, type }) => {
 
               <button
                 style={{ background: "#01CACA" }}
+                onClick={() => {
+                  if (!amount) {
+                    toast.error("Deposit Amount is required", {
+                      position: "top-center",
+                      autoClose: 5000,
+                      hideProgressBar: true,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                      transition: Bounce,
+                    });
+                    return;
+                  } else {
+                    if (amount < 10) {
+                      toast.error("Invald Deposit Amount", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                      });
+                      return;
+                    }
+                  }
+                  setIndex(1);
+                }}
                 className="mt-4 rounded-2xl bg-[]-600 py-2 w-[100%] text-white"
               >
                 Make a Deposit

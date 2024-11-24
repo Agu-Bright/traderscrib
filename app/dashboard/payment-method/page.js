@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 // import Body from "./Body";
 
 import dynamic from "next/dynamic";
+import NavPage from "@components/navPage/NavPage";
 const Navbar = dynamic(() => import("@components/Navbar"), { ssr: false });
 const Body = dynamic(() => import("./Body"), { ssr: false });
 
@@ -55,8 +56,9 @@ export default function Home() {
   } else
     return (
       <>
-        <Navbar type="dashboard" data={session} />
-        <Body data={session} />
+        <NavPage>
+          <Body data={session} />
+        </NavPage>
       </>
     );
 }

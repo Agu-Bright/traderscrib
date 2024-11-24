@@ -146,9 +146,30 @@ const RestaurantContextProvider = ({ children }) => {
     return `${day} ${month} ${year}: ${hour}:${min}:${sec}`;
   }
 
+  //investment context
+
+  const [plan, setPlan] = useState("beginner");
+  const [coin, setCoin] = useState("bitcoin");
+  const [amount, setAmount] = useState("");
+  const [index, setIndex] = useState(0);
+  const [type2, setType2] = useState("");
+
   return (
     <RestaurantContext.Provider
       value={{
+        //investment context-----------------
+        plan,
+        setPlan,
+        coin,
+        setCoin,
+        amount,
+        setAmount,
+        index,
+        setIndex,
+        type2,
+        setType2,
+        //investment context-----------------
+
         cuisine,
         setCuisine,
         search,
