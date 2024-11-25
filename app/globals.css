@@ -5,3 +5,13 @@
 .css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root {
   padding: "0px" !important;
 }
+
+.MuiTableHead-root {
+  background-color: #152953 !important;
+}
+
+.MuiTableCell-head {
+  background-color: #152953 !important;
+  color: white !important;
+  font-weight: bold;
+}

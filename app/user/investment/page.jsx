@@ -35,6 +35,7 @@ export default function Home() {
     amount,
     coin,
     plan,
+    setIndex,
     setAmount,
   } = useContext(RestaurantContext);
 
@@ -110,9 +111,10 @@ export default function Home() {
         amount: amount,
         method: "crypto",
         network: main?.network,
-        usdt: Number(amount / rate?.rate).toFixed(2),
         screenShot: image,
         status: "pending",
+        plan,
+        coin,
       });
       toast.success("Deposit Successful", {
         position: "top-center",
@@ -125,6 +127,7 @@ export default function Home() {
         theme: "light",
         transition: Bounce,
       });
+      setIndex(0);
       setLoading(false);
       setImage("");
     } catch (error) {
@@ -421,9 +424,7 @@ export default function Home() {
                                       marginTop: "10px",
                                       color: "white",
                                     }}
-                                    onClick={() =>
-                                      loading ? undefined : handleSubmit()
-                                    }
+                                    onClick={() => handleSubmit()}
                                   >
                                     {loading ? (
                                       <CircularProgress

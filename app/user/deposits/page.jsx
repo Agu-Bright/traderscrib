@@ -9,6 +9,9 @@ import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { RestaurantContext } from "@context/RestaurantContext";
 import Card from "@components/Card";
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -16,6 +19,31 @@ export default function Home() {
   const [categories, setCategories] = useState([]);
   const { myWallet, formatMoney, setSideBar2, setGlobalCat } =
     useContext(RestaurantContext);
+
+  const [deposits, setDeposits] = useState([]);
+  
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/deposit/get-my-deposits");
+        console.log("deposits", data);
+        setDeposits(data?.deposits.reverse());
+      } catch (error) {
+        toast.error(error?.response?.data?.message, {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      }
+    })();
+  }, []);
 
   if (status === "loading") {
     return (
@@ -52,9 +80,9 @@ export default function Home() {
               <Typography className="text-white text-2xl">
                 Active Deposits{" "}
               </Typography>
-            </Box>
+            </Box>        
             <Box className="w-[100%] mt-4">
-              <Card title="Deposits" type="deposit" />
+              <Card title="Deposits" type="deposit" deposits={deposits} />
             </Box>
           </Stack>
         </Box>

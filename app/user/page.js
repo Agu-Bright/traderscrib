@@ -60,24 +60,28 @@ export default function Home() {
   } else
     return (
       <NavPage>
-        <Box sx={{ height: "100%", paddingBottom: "15px" }}>
-          <Stack direction="row" justifyContent="space-between">
+        <Box sx={{ height: "100%", width: "100%", paddingBottom: "15px" }}>
+          <Stack
+            direction={{ md: "row", xs: "column" }}
+            justifyContent="space-between"
+            sx={{ width: "100%" }}
+          >
             <Box
               sx={{
-                width: "65%",
+                width: { md: "65%", xs: "100%" },
                 height: "92.3vh",
                 overflowY: "scroll",
               }}
             >
               <Stack
                 direction={{ md: "row", xs: "column" }}
-                sx={{ height: "63vh" }}
+                sx={{ height: { md: "63vh", xs: "auto" } }}
                 justifyContent="space-between"
               >
                 <Box
                   className="rounded-xl"
                   sx={{
-                    width: "33%",
+                    width: { md: "33%", xs: "100%" },
                     height: "100%",
                     overflowY: "scroll",
                     border: "1px solid black",
@@ -104,8 +108,9 @@ export default function Home() {
                 </Box>
                 <Box
                   sx={{
-                    width: "65%",
+                    width: { md: "65%", xs: "100%" },
                     height: "100%",
+                    paddingTop: { md: "0px", xs: "20px" },
                   }}
                 >
                   <Box
@@ -150,9 +155,11 @@ export default function Home() {
             <Box
               sx={{
                 borderRadius: "10px",
-                width: "34%",
+                width: { md: "34%", xs: "100%" },
                 background:
                   "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)",
+                paddingTop: { md: "0px", xs: "20px" },
+                height: { md: "90vh", xs: "80vh" },
               }}
             >
               <MarketNews />

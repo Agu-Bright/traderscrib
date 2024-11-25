@@ -11,8 +11,7 @@ import { Bounce } from "react-toastify"; // Import the Bounce transition if it's
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 
-const Card = ({ title, type }) => {
-  const [active, setActive] = useState("beginner");
+const Card = ({ title, type, deposits }) => {
   const {
     myWallet,
     formatMoney,
@@ -22,7 +21,51 @@ const Card = ({ title, type }) => {
     setIndex,
     coin,
     amount,
+    formatDateToReadable,
   } = useContext(RestaurantContext);
+  const [active, setActive] = useState("beginner");
+  const getColor = (status) => {
+    if (status === "success") {
+      return "green";
+    }
+    if (status === "pending") {
+      return "orange";
+    }
+    if (status === "rejected") {
+      return "red";
+    }
+  };
+  let data = [];
+  deposits &&
+    deposits.map((order) =>
+      data.push([
+        <Typography className="text-green-300">
+          {formatMoney(order?.amount)}
+        </Typography>,
+        <Typography className="text-red-300">
+          {formatMoney(order?.interest)}
+        </Typography>,
+        order?.coin,
+        order?.plan,
+        <div
+          style={{
+            color: getColor(order?.status),
+          }}
+        >
+          {order?.status}
+        </div>,
+        formatDateToReadable(order?.createdAt),
+      ])
+    );
+  const columns = [
+    "Amount",
+    "interest",
+    "Coin",
+    "Plan",
+    "Status",
+    "Created At",
+  ];
+
   if (type === "investment")
     return (
       <Box
@@ -405,14 +448,14 @@ const Card = ({ title, type }) => {
           <Box
             className="mt-3 p-2 rounded-xl bg-blue-950 bg-opacity-50"
             sx={{
-              width: "95%",
+              width: "100%%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            <TableComponent />
+            <TableComponent data={data} columns={columns} />
           </Box>
         </Box>
       </Box>

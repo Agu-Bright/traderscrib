@@ -20,10 +20,16 @@ const depositModel = new mongoose.Schema({
   amount: {
     type: String,
   },
+  interest: {
+    type: String,
+    default: 0,
+  },
   status: {
     type: String,
     default: "pending",
   },
+  coin: { type: String },
+  plan: { type: String },
   createdAt: {
     type: Date,
     default: Date.now,

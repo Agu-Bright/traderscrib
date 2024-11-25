@@ -9,6 +9,9 @@ import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import { RestaurantContext } from "@context/RestaurantContext";
 import Card from "@components/Card";
+import { toast } from "react-toastify";
+import { Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -18,6 +21,30 @@ export default function Home() {
     useContext(RestaurantContext);
 
   const [active, setActive] = useState("deposit");
+  const [deposits, setDeposits] = useState([]);
+
+  useEffect(() => {
+    active === "deposit" &&
+      (async () => {
+        try {
+          const { data } = await axios.get("/api/deposit/get-my-deposits");
+          console.log("deposits", data);
+          setDeposits(data?.deposits.reverse());
+        } catch (error) {
+          toast.error(error?.response?.data?.message, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+      })();
+  }, [active]);
 
   if (status === "loading") {
     return (
@@ -35,7 +62,6 @@ export default function Home() {
       </div>
     );
   }
-
   if (status === "unauthenticated") {
     router.push("/user/login");
   } else
@@ -108,16 +134,16 @@ export default function Home() {
             </Box>
             <Box className="w-[100%] mt-4">
               {active === "deposit" && (
-                <Card title="Deposits History" type="deposit" />
+                <Card title="Deposits" type="deposit" deposits={deposits} />
               )}
               {active === "earning" && (
-                <Card title="Earning History" type="deposit" />
+                <Card title="Earning History" type="earning" />
               )}
               {active === "withdrawal" && (
-                <Card title="Withdrawal History" type="deposit" />
+                <Card title="Withdrawal History" type="withdrawal" />
               )}
               {active === "trading" && (
-                <Card title="Trading History" type="deposit" />
+                <Card title="Trading History" type="trading" />
               )}
             </Box>
           </Stack>

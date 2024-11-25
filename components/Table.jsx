@@ -6,6 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import MUIDataTable from "mui-datatables";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -19,52 +21,47 @@ const rows = [
   createData("Gingerbread", 356, 16.0, 49, 3.9),
 ];
 
-export default function TableComponent() {
+export default function TableComponent({ data, columns }) {
+  const options = {
+    responsive: "standard",
+  };
+
+  // Custom theme for MUIDataTable
+  const getMuiTheme = () =>
+    createTheme({
+      components: {
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              backgroundColor: "#152953", // Set the background to black
+              color: "white", // Text color
+            },
+          },
+        },
+        MuiTableCell: {
+          styleOverrides: {
+            root: {
+              background: "#152953",
+              color: "white", // Ensure text is visible
+            },
+            head: {
+              background: "#152953",
+              color: "white", // Header text color
+            },
+          },
+        },
+        MuiTableHead: {
+          styleOverrides: {
+            root: {
+              background: "#152953",
+            },
+          },
+        },
+      },
+    });
   return (
-    <TableContainer
-      sx={{ background: "linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)" }}
-      component={Paper}
-    >
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell className="text-white">Date</TableCell>
-            <TableCell className="text-white" align="right">
-              Amount
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Detail
-            </TableCell>
-            <TableCell className="text-white" align="right">
-              Release
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        {/* <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell className="text-white" component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell className="text-white" align="right">
-                {row.calories}
-              </TableCell>
-              <TableCell className="text-white" align="right">
-                {row.fat}
-              </TableCell>
-              <TableCell className="text-white" align="right">
-                {row.carbs}
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody> */}
-        <TableBody className="py-3">
-          <TableRow className="text-white p-2">No Active Deposit</TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <ThemeProvider theme={getMuiTheme()}>
+      <MUIDataTable data={data} columns={columns} options={options} />
+    </ThemeProvider>
   );
 }
