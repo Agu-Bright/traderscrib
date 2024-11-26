@@ -10,6 +10,10 @@
   border: 15px solid transparent;
 }
 
+.tss-hj53wm-MUIDataTableToolbar-titleText {
+  color: white;
+}
+
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
   color: #1a53ef;

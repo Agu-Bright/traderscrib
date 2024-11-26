@@ -6800,8 +6800,8 @@ button.bg-dark:hover {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+  -webkit-clippath: inset(50%);
+  clippath: inset(50%);
   border: 0;
 }
 .sr-only-focusable:active,
@@ -6812,8 +6812,8 @@ button.bg-dark:hover {
   overflow: visible;
   clip: auto;
   white-space: normal;
-  -webkit-clip-path: none;
-  clip-path: none;
+  -webkit-clippath: none;
+  clippath: none;
 }
 .w-25 {
   width: 25% !important;

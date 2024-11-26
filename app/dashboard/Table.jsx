@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import BasicModal from "./Modal";
 import { RestaurantContext } from "@context/RestaurantContext";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Table = () => {
   const { formatMoney, formatDateToReadable } = useContext(RestaurantContext);
@@ -141,7 +142,7 @@ const Table = () => {
 
         <>
           {order?.screenShot && (
-            <a href={order?.screenShot} target="_blank">
+            <a href={order?.screenShot} target="_blank" className="text-white underline">
               view Screenshot
             </a>
           )}
@@ -255,14 +256,50 @@ const Table = () => {
   //     ])
   //   );
 
+  const getMuiTheme = () =>
+    createTheme({
+      components: {
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              backgroundColor: "#152953", // Set the background to black
+              color: "white", // Text color
+            },
+          },
+        },
+        MuiTableCell: {
+          styleOverrides: {
+            root: {
+              background: "#152953",
+              color: "white", // Ensure text is visible
+            },
+            head: {
+              background: "#152953",
+              color: "white", // Header text color
+            },
+          },
+        },
+        MuiTableHead: {
+          styleOverrides: {
+            root: {
+              background: "#152953",
+            },
+          },
+        },
+      },
+    });
+
   return (
     <>
-      <MUIDataTable
-        title="Account Top Ups"
-        data={data}
-        columns={columns}
-        options={options}
-      />
+      <ThemeProvider theme={getMuiTheme()}>
+        <MUIDataTable
+          title="Account Top Ups"
+          data={data}
+          columns={columns}
+          options={options}
+        />
+      </ThemeProvider>
+
       {/* <div style={{ marginTop: "20px" }}>
         <MUIDataTable
           title="Withdrawal Requests"

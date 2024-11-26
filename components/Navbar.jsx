@@ -54,7 +54,7 @@ const Navbar = ({ fixed, type, data, topNav, title }) => {
   //others
   const { data: session } = useSession();
   const [scrollingUp, setScrollingUp] = useState(false);
-  
+
   const changeBackground = () => {
     if (window.scrollY >= 72) {
       setScrollingUp(true);
@@ -186,29 +186,18 @@ const Navbar = ({ fixed, type, data, topNav, title }) => {
         </>
       ) : (
         <>
-          <header className="main-header">
+          <header
+            className="main-header"
+            style={{ position: "fixed", width: "100%" }}
+          >
             <div className="container-fluid">
               <nav className="navbar navbar-expand-lg navbar-light">
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Link
-                    style={{
-                      fontWeight: "800",
-                      display: "flex",
-                      alignItems: "center",
-                      flexDirection: "row",
-                    }}
-                    className="navbar-brand logo"
-                    href="/user"
-                  >
-                    <Typography sx={{ fontWeight: "800", color: "white" }}>
-                      TradersCrib{" "}
-                    </Typography>
-                  </Link>
-                </Stack>
+                <Image
+                  src="/img/logo1.png"
+                  alt="logo"
+                  width={120}
+                  height={120}
+                />
                 <IconButton
                   // style={{ border: "1px solid black" }}
                   onClick={() => setSideBar(true)}

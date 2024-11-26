@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -8,9 +8,11 @@ import { Box, Stack } from "@mui/material";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { Data } from "@react-google-maps/api";
+import { RestaurantContext } from "@context/RestaurantContext";
 const InfoCards = ({ summary }) => {
   const { data: session, status } = useSession();
   const [dashboard, setDashboard] = useState();
+  const { formatMoney } = useContext(RestaurantContext);
   useEffect(() => {
     (async () => {
       try {
@@ -35,10 +37,10 @@ const InfoCards = ({ summary }) => {
           <div className="col-lg-3 col-md-3 col-sm-6">
             <div className="ui-item bg-success">
               <div className="left">
-                {session?.user?.role === "admin" && <p>Today's Orders</p>}
+                {session?.user?.role === "admin" && <p>Total Amount</p>}
 
                 {session?.user?.role === "admin" && (
-                  <h4>{dashboard?.orders || "0"}</h4>
+                  <h4>{formatMoney(dashboard?.totalBalance) || "$ 0"}</h4>
                 )}
               </div>
               {/* <div className="right">
@@ -66,8 +68,10 @@ const InfoCards = ({ summary }) => {
           <div className="col-lg-3 col-md-3 col-sm-6">
             <div className="ui-item bg-active">
               <div className="left">
-                {session?.user?.role === "admin" && <p>Logs</p>}
-                {session?.user?.role === "sub-admin" && <p>Logs</p>}
+                {session?.user?.role === "admin" && <p>WIthdrawal Request</p>}
+                {session?.user?.role === "sub-admin" && (
+                  <p>WIthdrawal Request</p>
+                )}
                 {session?.user?.role === "admin" && (
                   <h4>{dashboard?.logs || "0"}</h4>
                 )}
@@ -121,9 +125,9 @@ const InfoCards = ({ summary }) => {
             >
               <div className="ui-item bg-success">
                 <div className="left">
-                  {session?.user?.role === "admin" && <p>Today's Orders</p>}
+                  {session?.user?.role === "admin" && <p>Total Amount</p>}
                   {session?.user?.role === "admin" && (
-                    <h4>{dashboard?.orders || "NGN 0"}</h4>
+                    <h4>{formatMoney(dashboard?.totalBalance) || "$ 0"}</h4>
                   )}
                 </div>
                 <div className="right">
@@ -159,7 +163,9 @@ const InfoCards = ({ summary }) => {
               <div className="col-lg-3 col-md-3 col-sm-6">
                 <div className="ui-item bg-active">
                   <div className="left">
-                    {session?.user?.role === "admin" && <p>Logs</p>}
+                    {session?.user?.role === "admin" && (
+                      <p>Withdrawal Request</p>
+                    )}
                     {session?.user?.role === "admin" && (
                       <h4>{dashboard?.logs || "0"}</h4>
                     )}

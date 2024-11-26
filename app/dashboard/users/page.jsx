@@ -1,31 +1,29 @@
 "use client";
-// import Navbar from "@components/Navbar";
-import {
-  Box,
-  CircularProgress,
-  Stack,
-  Typography,
-  Grid,
-  Paper,
-  IconButton,
-  Avatar,
-} from "@mui/material";
-import { images } from "@next.config.cjs";
+import NavPage from "@components/navPage/NavPage";
+import { Box, CircularProgress, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-// import Body from "./Body";
-import dynamic from "next/dynamic";
+import Table from "./Table";
 
-import NoSSRComponent from "@components/NoSSR";
-import { ToastContainer } from "react-toastify";
-const Navbar = dynamic(() => import("@components/Navbar"), { ssr: false });
-const Body = dynamic(() => import("./Body"), { ssr: false });
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import React from "react";
+import Image from "next/image";
+import TradingViewWidget from "@components/TradingViewWidget";
+import TradingPairWidget from "@components/TradingPairWidget";
+import MyOrder from "@components/MyOrder";
+import Buy from "@components/Buy";
+import MarketNews from "@components/MarketNews";
+import InfoCards from "@components/InfoCard";
+
 export default function Home() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log(session);
+  const summary = {};
 
   if (status === "loading") {
     return (
@@ -36,16 +34,17 @@ export default function Home() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          background: "#161722",
         }}
       >
-        <CircularProgress style={{ color: "orange" }} />
+        <CircularProgress className="text-gray-400" />
       </div>
     );
   }
 
   if (status === "unauthenticated") {
-    router.push("/dashboard/login");
-  } else if (session?.user?.role !== "admin") {
+    router.push("/user/login");
+  } else if (session?.user?.role === "user") {
     return (
       <div
         style={{
@@ -65,9 +64,48 @@ export default function Home() {
     );
   } else
     return (
-      <>
-        <Navbar type="dashboard" data={session} />
-        <Body data={session} />
-      </>
+      <NavPage>
+        <Box sx={{ height: "100%", paddingBottom: "15px" }}>
+          <div>
+            <>
+              <div className="dashboard-header clearfix">
+                <div className="row">
+                  <div className="col-sm-12 col-md-6">
+                    <h4>
+                      Hi &#x1F44B;, {session?.user?.accountName}{" "}
+                      {session?.user?.role === "admin" && (
+                        <span style={{ fontSize: "12px", color: "red" }}>
+                          Admin
+                        </span>
+                      )}{" "}
+                      {session?.user?.role === "sub-admin" && (
+                        <span style={{ fontSize: "12px", color: "red" }}>
+                          Customer Service
+                        </span>
+                      )}{" "}
+                    </h4>
+                  </div>
+                  <div className="col-sm-12 col-md-6">
+                    <div className="breadcrumb-nav">
+                      <ul>
+                        {/* <li>
+                          <a href="/">Index</a>
+                        </li> */}
+                        <li>
+                          <a href="#" className="active">
+                            Users
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <Table />
+            </>
+          </div>
+        </Box>
+      </NavPage>
     );
 }

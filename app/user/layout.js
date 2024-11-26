@@ -7,8 +7,8 @@ import LiveChatScript from "@components/LiveChat";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Traderscrib",
-  description: "A market place for user logs",
+  title: "ForexCrib",
+  description: "Invest in crypto and stock assets",
 };
 
 export default function RootLayout({ children }) {

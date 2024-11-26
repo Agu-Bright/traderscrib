@@ -7,6 +7,7 @@ import User from "@models/user";
 import Order from "@models/order";
 import Deposit from "@models/Deposit";
 import Log from "@models/log";
+import Wallet from "@models/wallet";
 
 export const GET = async (req, res) => {
   const session = await getServerSession(
@@ -38,6 +39,19 @@ export const GET = async (req, res) => {
     const users = await User.find().countDocuments();
     //get todays orders
 
+    const result = await Wallet.aggregate([
+      {
+        $group: {
+          _id: null, // We don't need to group by any specific field
+          totalBalance: { $sum: "$balance" }, // Summing the 'balance' field
+        },
+      },
+    ]);
+
+    // Extract total balance from result
+    const totalBalance = result[0]?.totalBalance || 0;
+    console.log("Total Balance:", totalBalance);
+
     const orders = await Order.find({
       createdAt: {
         $gte: today,
@@ -57,7 +71,7 @@ export const GET = async (req, res) => {
     return new Response(
       JSON.stringify({
         success: true,
-        dashboard: { users, orders, deposits, logs },
+        dashboard: { users, orders, deposits, logs, totalBalance },
       }),
       {
         status: 200,

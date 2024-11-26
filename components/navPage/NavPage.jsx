@@ -46,13 +46,13 @@ const NavPage = ({ children, buttonNav, topNav, title, type }) => {
         }}
       >
         <Navbar fixed={false} topNav={topNav} title={title} type="dashboard" />
-        <div>
+        <div style={{ marginTop: "14vh" }}>
           <div className="pr-3 pl-3">
             <Stack direction="row" justifyContent="space-between">
               <Sidebar />
               <Box
                 className="h-[92.3vh]"
-                sx={{ width: { md: "79%", xs: "100%" }, marginBottom:"20px" }}
+                sx={{ width: { md: "79%", xs: "100%" }, marginBottom: "20px" }}
               >
                 {children}
                 <BasicModal

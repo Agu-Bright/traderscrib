@@ -11,6 +11,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteModal from "./Modal";
 import { RestaurantContext } from "@context/RestaurantContext";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+  
 const Table = () => {
   const { formatDateToReadable, formatMoney, setType } =
     useContext(RestaurantContext);
@@ -147,14 +149,50 @@ const Table = () => {
         </IconButton>,
       ])
     );
+
+  const getMuiTheme = () =>
+    createTheme({
+      components: {
+        MuiPaper: {
+          styleOverrides: {
+            root: {
+              backgroundColor: "#152953", // Set the background to black
+              color: "white", // Text color
+            },
+          },
+        },
+        MuiTableCell: {
+          styleOverrides: {
+            root: {
+              background: "#152953",
+              color: "white", // Ensure text is visible
+            },
+            head: {
+              background: "#152953",
+              color: "white", // Header text color
+            },
+          },
+        },
+        MuiTableHead: {
+          styleOverrides: {
+            root: {
+              background: "#152953",
+            },
+          },
+        },
+      },
+    });
   return (
     <>
-      <MUIDataTable
-        title="User Details"
-        data={data}
-        columns={columns}
-        options={options}
-      />
+      <ThemeProvider theme={getMuiTheme()}>
+        <MUIDataTable
+          title="User Details"
+          data={data}
+          columns={columns}
+          options={options}
+        />
+      </ThemeProvider>
+
       <DeleteModal
         open={open}
         setOpen={setOpen}

@@ -107,8 +107,8 @@ export default function Home() {
                       fill="#0601B4"
                     ></circle>
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M19.9873 23.7086C16.7643 23.7086 14.0119 24.1959 14.0119 26.1475C14.0119 28.099 16.7468 28.6038 19.9873 28.6038C23.2103 28.6038 25.9619 28.1157 25.9619 26.1649C25.9619 24.2141 23.2278 23.7086 19.9873 23.7086Z"
                       stroke="#161455"
                       stroke-linecap="round"
@@ -116,8 +116,8 @@ export default function Home() {
                     ></path>
                     <path
                       opacity="0.4"
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M19.9873 20.9249C22.1024 20.9249 23.8167 19.2098 23.8167 17.0948C23.8167 14.9797 22.1024 13.2654 19.9873 13.2654C17.8722 13.2654 16.1571 14.9797 16.1571 17.0948C16.15 19.2027 17.8532 20.9178 19.9603 20.9249H19.9873Z"
                       stroke="#161455"
                       stroke-linecap="round"
@@ -150,8 +150,8 @@ export default function Home() {
                       fill="#0601B4"
                     ></circle>
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
+                      fillRule="evenodd"
+                      clipRule="evenodd"
                       d="M25.7209 15.1899C26.085 15.3174 26.3284 15.6607 26.3284 16.0465V21.6907C26.3284 23.2682 25.755 24.774 24.7425 25.9407C24.2334 26.5282 23.5892 26.9857 22.905 27.3557L19.94 28.9574L16.97 27.3549C16.285 26.9849 15.64 26.5282 15.13 25.9399C14.1167 24.7732 13.5417 23.2665 13.5417 21.6874V16.0465C13.5417 15.6607 13.785 15.3174 14.1492 15.1899L19.6342 13.2624C19.8292 13.194 20.0417 13.194 20.2359 13.2624L25.7209 15.1899Z"
                       stroke="#161455"
                       stroke-linecap="round"
