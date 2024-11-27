@@ -18,7 +18,7 @@ const Navbar = () => {
   useEffect(() => {
     document.onclick = (e) => {
       const target = e.target;
-      if (!menuBtnEl.current.contains(target)) setState(false);
+      if (!menuBtnEl?.current?.contains(target)) setState(false);
     };
   }, []);
 
@@ -32,7 +32,7 @@ const Navbar = () => {
         />
       </div>
       <nav
-        className={`pb-5 md:text-sm md:static md:block ${
+        className={`md:text-sm md:static md:block ${
           state
             ? "bg-gray-900 absolute z-20 top-0 inset-x-0 rounded-b-2xl shadow-xl md:bg-gray-900"
             : "hidden"
@@ -48,7 +48,7 @@ const Navbar = () => {
             <ul className="flex-1 justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
               {navigation.map((item, idx) => {
                 return (
-                  <li key={idx} className="hover:text-gray-50">
+                  <li key={idx} className=" text-white hover:text-gray-50">
                     <Link href={item.href} className="block">
                       {item.name}
                     </Link>

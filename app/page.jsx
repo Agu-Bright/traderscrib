@@ -6,17 +6,23 @@ import Hero from "@/components/ui/Hero";
 import Pricing from "@/components/ui/Pricing";
 import Testimonial from "@/components/ui/Testimonial";
 import VisualFeatures from "@/components/ui/VisualFeatures";
+import Footer from "@components/ui/Footer";
+import Navbar from "@components/ui/Navbar";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <VisualFeatures />
-      <Features />
-      <CTA />
-      <Testimonial />
-      <Pricing />
-      <FAQs />
+      <div className="bg-gray-900">
+        <Navbar />
+        <Hero />
+        <VisualFeatures />
+        <Features />
+        <CTA />
+        <Testimonial />
+        <Pricing />
+        <FAQs />
+        <Footer />
+      </div>
     </>
   );
 }

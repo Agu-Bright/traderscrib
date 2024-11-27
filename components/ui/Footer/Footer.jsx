@@ -4,9 +4,9 @@ const Footer = () => {
       <div className="custom-screen">
         <div className="mt-10 py-8 border-t border-gray-800 items-center justify-between sm:flex">
           <p className="text-gray-400 text-center">
-            © 2023 Mailgo Inc. All rights reserved.
+            © 2024 ForexCrib. All rights reserved.
           </p>
-          <div className="flex items-center justify-center gap-x-6 text-gray-500 mt-6 sm:mt-0">
+          <div className=" hidden  items-center justify-center gap-x-6 text-gray-500 mt-6 sm:mt-0">
             <a href="/" target="_blank" aria-label="social media">
               <svg
                 className="w-6 h-6 hover:text-gray-200 duration-150"
@@ -65,7 +65,7 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-        </div>
+        </div>  
       </div>
     </footer>
   );
