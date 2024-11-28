@@ -213,7 +213,7 @@ const Card = ({ title, type, deposits }) => {
                   <option value="bitcoin">Bitcoin</option>
                   <option value="litecoin">Litecoin </option>
                   <option value="dogecoin">Dogecoin </option>
-                  <option value="etherium">Etherium </option>
+                  <option value="ethereum">Ethereum </option>
                   <option value="bitcoin-cash">Bitcoin Cash </option>
                   <option value="dash">Dash </option>
                   <option value="usdt-trc20">USDT TRC20 </option>
