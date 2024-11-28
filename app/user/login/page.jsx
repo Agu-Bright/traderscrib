@@ -88,14 +88,15 @@ function page() {
                     Welcome to{" "}
                     <span
                       style={{
-                        background: "linear-gradient(to right, orange, yellow)",
+                        background:
+                          "linear-gradient(to right, #34baef, #a4d9ea)",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         fontWeight: "800",
                         fontSize: "1.2em",
                       }}
                     >
-                      Traderscrib
+                      ForexCrib
                     </span>
                   </h1>
                   <h5 style={{ color: "#d9d6d6", fontSize: "0.9em" }}>
@@ -169,7 +170,7 @@ function page() {
                   style={{ marginTop: "50px", padding: "0px 15px" }}
                 >
                   <div className="mb-12">
-                    <h3 className="text-3xl font-bold text-yellow-400">
+                    <h3 className="text-3xl font-bold text-sky-400">
                       Sign in{" "}
                     </h3>
                   </div>
@@ -183,7 +184,7 @@ function page() {
                         name="email"
                         type="email"
                         required
-                        className="w-full bg-transparent text-sm text-white border-b border-gray-300 focus:border-yellow-400 px-2 py-3 outline-none"
+                        className="w-full bg-transparent text-sm text-white border-b border-gray-300 focus:border-sky-400 px-2 py-3 outline-none"
                         placeholder="Enter email"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -237,7 +238,7 @@ function page() {
                         name="password"
                         type="password"
                         required
-                        className="w-full bg-transparent text-sm text-white border-b border-gray-300 focus:border-yellow-400 px-2 py-3 outline-none"
+                        className="w-full bg-transparent text-sm text-white border-b border-gray-300 focus:border-sky-400 px-2 py-3 outline-none"
                         placeholder="Enter password"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -284,7 +285,7 @@ function page() {
                       I accept the{" "}
                       <a
                         href="/"
-                        className="text-yellow-500 font-semibold hover:underline ml-1"
+                        className="text-sky-400 font-semibold hover:underline ml-1"
                       >
                         Terms and Conditions
                       </a>
@@ -293,9 +294,9 @@ function page() {
 
                   <div className="mt-12">
                     <button
-                      style={{ background: "#f3b455", color: "white" }}
+                      style={{ background: "#00CBCB", color: "white" }}
                       type="submit"
-                      className="btn-md button-theme btn-block"
+                      className="btn-md btn-block"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -308,7 +309,7 @@ function page() {
                       Don't have an account?{" "}
                       <a
                         href="/user/signup"
-                        className="text-yellow-400 font-semibold hover:underline ml-1"
+                        className="text-sky-400 font-semibold hover:underline ml-1"
                       >
                         Sign up here
                       </a>
