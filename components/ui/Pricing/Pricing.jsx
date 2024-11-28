@@ -1,8 +1,12 @@
+"use client";
+
 import LayoutEffect from "@/components/LayoutEffect";
 import SectionWrapper from "@/components/SectionWrapper";
 import Button from "../Button";
+import { useRouter } from "@node_modules/next/navigation";
 
 const Pricing = () => {
+  const router = useRouter();
   const plans = [
     {
       name: "Beginner plan",
@@ -103,6 +107,7 @@ const Pricing = () => {
                 </ul>
                 <div className="pt-8">
                   <Button
+                    onClick={() => router.push("/user/signup")}
                     className={`w-full rounded-full text-white ring-offset-2 focus:ring ${
                       item.isMostPop
                         ? "bg-sky-400 hover:bg-sky-400 focus:bg-sky-400 ring-sky-400"
