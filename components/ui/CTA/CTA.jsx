@@ -18,7 +18,7 @@ const CTA = () => (
           <div className="relative z-10">
             <div className="max-w-xl mx-auto text-center">
               <h2 className="text-gray-50 text-3xl font-semibold sm:text-4xl">
-                Unleash the Power of AI with Email Marketing
+                Unleash the Power of Forex Investment with Forex Crib
               </h2>
               <p className="mt-5 text-gray-300">
                 Mailgo is the perfect answer! Our AI-based email marketing
