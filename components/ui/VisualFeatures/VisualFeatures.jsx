@@ -1,6 +1,6 @@
 import SectionWrapper from "@/components/SectionWrapper";
-import Feature1 from "@/public/images/Feature-1.svg";
-import Feature2 from "@/public/images/Feature-2.svg";
+import Feature1 from "@/public/images/feature-3.svg";
+import Feature2 from "@/public/images/feature-4.svg";
 import Image from "next/image";
 
 const VisualFeatures = () => {
@@ -48,13 +48,13 @@ const VisualFeatures = () => {
                   </h3>
                   <p className="mt-3 sm:text-sm md:text-base">{item.desc}</p>
                 </div>
-                <div className="pl-8">
+                {/* <div className="pl-8">
                   <Image
-                    src={item.img}
+                    src={item?.img}
                     className="w-full ml-auto"
                     alt={item.title}
                   />
-                </div>
+                </div> */}
               </li>
             ))}
           </ul>

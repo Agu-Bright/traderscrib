@@ -9,7 +9,7 @@ const CTA = () => (
     <GradientWrapper wrapperclassname="max-w-xs h-[13rem] top-12 inset-0">
       <div className="custom-screen py-28 relative">
         <LayoutEffect
-          className="duration-1000 delay-300" 
+          className="duration-1000 delay-300"
           isInviewState={{
             trueState: "opacity-1",
             falseState: "opacity-0 translate-y-6",
@@ -29,7 +29,8 @@ const CTA = () => (
             <div className="mt-5 flex justify-center font-medium text-sm">
               <NavLink
                 href="/user/login"
-                className="flex items-center text-white bg-purple-600 hover:bg-purple-500 active:bg-purple-700 "
+                style={{ background: "#00CBCB" }}
+                className="flex items-center text-white hover:bg-sky-300 active:bg-sky-300 "
               >
                 Start now
                 <svg

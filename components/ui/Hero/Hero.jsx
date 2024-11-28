@@ -3,6 +3,7 @@ import Image from "next/image";
 import NavLink from "../NavLink";
 import HeroImg from "@/public/images/hero.svg";
 import LayoutEffect from "@/components/LayoutEffect";
+import { Background } from "@node_modules/@cloudinary/transformation-builder-sdk/qualifiers";
 
 const Hero = () => (
   <section>
@@ -32,7 +33,8 @@ const Hero = () => (
             <div className="flex justify-center font-medium text-sm">
               <NavLink
                 href="/user/login"
-                className="flex items-center text-white bg-purple-600 hover:bg-purple-500 active:bg-purple-700 "
+                style={{ background: "#00CBCB" }}
+                className="flex items-center text-whitehover:bg-sky-400 active:bg-sky-400 "
               >
                 Get Started
                 <svg
