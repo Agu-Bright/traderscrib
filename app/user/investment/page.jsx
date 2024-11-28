@@ -257,14 +257,19 @@ export default function Home() {
                       </Typography>
                       <Divider />
                       <Typography>
-                        <span className="font-extrabold">Deposit Amount:</span>{" "}
+                        <span className="font-extrabold text-gray">
+                          Deposit Amount:
+                        </span>{" "}
                         ${amount}
                       </Typography>
                       <Typography>
-                        <span className="font-extrabold">Coin</span>: {coin}
+                        <span className="font-extrabold text-gray">Coin</span>:{" "}
+                        {coin}
                       </Typography>
                       <Typography>
-                        <span className="font-extrabold">Investment Plan:</span>{" "}
+                        <span className="font-extrabold text-gray">
+                          Investment Plan:
+                        </span>{" "}
                         {plan}
                       </Typography>
                     </Box>
