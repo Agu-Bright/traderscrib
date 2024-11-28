@@ -95,7 +95,7 @@ function SideBarDrawer({ open, close }) {
           background: "linear-gradient(20deg,#0d0d0d,  #05286e, #0d0d0d)",
         }}
       >
-        <div className="px-5 border-white">
+        <div className="px-2 border-white">
           {root === "user" && (
             <ul className="mt-2" style={{ marginTop: "10px" }}>
               <AccordionUsage />
