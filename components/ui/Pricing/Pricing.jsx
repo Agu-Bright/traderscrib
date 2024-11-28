@@ -5,45 +5,39 @@ import Button from "../Button";
 const Pricing = () => {
   const plans = [
     {
-      name: "Basic plan",
-      desc: "For new creators building their list",
-      price: 0,
+      name: "Beginner plan",
+      desc: "Perfect for new investors looking to start small and learn the ropes of forex trading",
+      price: 10,
       isMostPop: false,
       features: [
-        "300 emails/day",
-        "Customizable Email Templates",
-        "Drag & Drop Editor",
-        "Transactional Emails",
-        "SMS & WhatsApp Campaigns",
-        "Phone support",
+        "Low minimum deposit",
+        "Guided trading tips",
+        "Limited risk exposure",
+        "Access to basic trading tools",
       ],
     },
     {
-      name: "Starter",
-      desc: "Ideal for growing businesses",
-      price: 12,
+      name: "Intermidiate",
+      desc: "Designed for investors with some trading experience who want to grow their portfolio.",
+      price: 15,
       isMostPop: true,
       features: [
-        "From 20k emails/month",
-        "Marketing Automation",
-        "A/B testing",
-        "Advanced statistics",
-        "Multi-user access",
-        "Send time optimization",
+        "Moderate deposit requirement",
+        "Access to advanced analytics",
+        "Diversified trading strategies",
+        "Regular performance reports",
       ],
     },
     {
-      name: "Business",
-      desc: "Built for marketing managers",
+      name: "Pro",
+      desc: "Tailored for seasoned investors looking to maximize their returns with advanced tools and strategies",
       price: 32,
       isMostPop: false,
       features: [
-        "Everything in Starter",
-        "Enterprise-grade Security",
-        "Advanced Integrations",
-        "Sub-account Management",
-        "Tailored Onboarding",
-        "Personalized support",
+        "High deposit threshold",
+        "Priority support from trading experts",
+        "Full access to premium trading tools",
+        "Customized investment strategies",
       ],
     },
   ];
@@ -70,17 +64,17 @@ const Pricing = () => {
             <div
               key={idx}
               className={`relative flex-1 flex items-stretch flex-col rounded-xl border border-gray-800 mt-6 sm:mt-0 ${
-                item.isMostPop ? "border border-purple-500" : ""
+                item.isMostPop ? "border border-sky-400" : ""
               }`}
               style={{
                 backgroundImage: item.isMostPop ? mostPopPricingBg : "",
               }}
             >
               <div className="p-8 space-y-4 border-b border-gray-800 text-center">
-                <span className="text-purple-600 font-medium">{item.name}</span>
+                <span className="text-sky-400 font-medium">{item.name}</span>
                 <div className="text-gray-50 text-3xl font-semibold">
-                  ${item.price}{" "}
-                  <span className="text-xl text-gray-400 font-normal">/mo</span>
+                  {item.price}{" "}
+                  <span className="text-xl text-gray-400 font-normal">%</span>
                 </div>
                 <p className="text-gray-400">{item.desc}</p>
               </div>
@@ -113,7 +107,7 @@ const Pricing = () => {
                       item.isMostPop
                         ? "bg-sky-400 hover:bg-sky-400 focus:bg-sky-400 ring-sky-400"
                         : "bg-gray-800 hover:bg-gray-700 ring-gray-800 "
-                    }`} 
+                    }`}
                   >
                     Get Started
                   </Button>
