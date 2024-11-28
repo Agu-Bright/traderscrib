@@ -22,7 +22,7 @@ const VisualFeatures = () => {
             <div className="custom-screen text-gray-300">
                 <div className="max-w-xl mx-auto text-center">
                     <h2 className="text-gray-50 text-3xl font-semibold sm:text-4xl">
-                        Take your Forex Trading to the next level with forexcrib
+                        Take your Forex Trading to the next level with forexcrib    
                     </h2>
                     <p className="mt-3">
                         With Mailgo's powerful features, you can easily create and send beautiful emails that will engage your customers and drive more sales.
