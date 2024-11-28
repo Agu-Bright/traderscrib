@@ -13,45 +13,45 @@ const Testimonial = () => {
   const testimonials = [
     {
       avatar: user1,
-      name: "Mark Zuckerberg",
-      title: "Founder of meta",
+      name: "David M.",
+      title: "Professional Trader",
       quote:
-        "we've been using Mailgo for almost a year now and have nothing but great things to say. It's super easy to set up campaigns and its reporting features are incredibly detailed.",
+        "ForexCrib has revolutionized the way I trade. The automated profit tracking is a game-changer!",
     },
     {
       avatar: user2,
-      name: "Guillermo Rauch",
-      title: "Founder of Vercel",
+      name: "Sarah T.",
+      title: "Financial Analyst",
       quote:
-        "Mailgo has been a great addition to our email marketing strategy. It's so user-friendly, yet powerful and effective. I'm able to quickly create beautiful emails.",
+        "I love how secure and transparent the platform is. I feel confident investing my funds here.",
     },
     {
       avatar: user3,
-      name: "Sidi jeddou",
-      title: "Founder of Float UI",
+      name: "Mark J.",
+      title: "Entrepreneur",
       quote:
-        "I highly recommend Mailgo for anyone looking for an easy-to-use and reliable email marketing tool! It's simple to use and has been a great help.",
+        "The expert guidance provided has helped me make smarter investment decisions. Highly recommended!",
     },
     {
       avatar: user4,
-      name: "Ghazbel",
-      title: "Founder of forceY",
+      name: "Emma K.",
+      title: "New Investor",
       quote:
-        "I've been using Mailgo for the past few months and I'm extremely impressed. The user interface is very intuitive, and I love the automated features .",
+        "ForexCrib's user-friendly interface makes it so easy to manage my portfolio, even on the go.",
     },
     {
       avatar: user5,
-      name: "Ana khan",
-      title: "Founder of larax",
+      name: "Liam R.",
+      title: "Part-Time Trader",
       quote:
-        "Mailgo is the best email marketing tool I've ever used. It's incredibly simple and intuitive to use, yet it offers a wide range of features and options.",
+        "The flexible investment plans cater to my needs perfectly, whether I'm scaling up or testing the waters.",
     },
     {
       avatar: user6,
-      name: "Ahmed khasem",
-      title: "Founder of Let’s code",
+      name: "Sophia L.",
+      title: "Seasoned Investor",
       quote:
-        "Mailgo is definitely the way to go when it comes to email marketing + I highly recommend it as an email marketing tool with AI support.",
+        "ForexCrib truly takes forex trading to the next level. My returns have never been this consistent.",
     },
   ];
 
@@ -60,7 +60,7 @@ const Testimonial = () => {
       <div id="testimonials" className="custom-screen text-gray-300">
         <div className="max-w-2xl text-center md:mx-auto">
           <h2 className="text-gray-50 text-3xl font-semibold sm:text-4xl">
-            Mailgo is loved by the best founders around the world
+            ForexCrib is loved by the best Forex Traders around the world
           </h2>
         </div>
         <GradientWrapper
