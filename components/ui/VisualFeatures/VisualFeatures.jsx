@@ -6,13 +6,13 @@ import Image from "next/image";
 const VisualFeatures = () => {
   const features = [
     {
-      title: "Send thousands of emails",
-      desc: "Send thousands of emails quickly and easily. You can customize the content of each email",
+      title: "",
+      desc: "Stay ahead of the curve with advanced trading analytics, real-time market updates, and tools designed to give you the edge in every trade. ",
       img: Feature1,
     },
     {
-      title: "Write your email content using AI",
-      desc: "AI-powered email content writing is the perfect solution for busy professionals who need to quickly create engaging emails.",
+      title: "",
+      desc: "Join a thriving community of seasoned traders and mentors, where shared experiences and expert guidance pave the way to success.",
       img: Feature2,
     },
   ];
