@@ -202,7 +202,7 @@ function SideBarDrawer({ open, close }) {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/live-trading" style={{ display: "flex" }}>
                   <Image
                     src="/img/bar-chart.png"
                     alt="deposit"
