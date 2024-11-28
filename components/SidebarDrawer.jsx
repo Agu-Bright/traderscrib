@@ -164,7 +164,7 @@ function SideBarDrawer({ open, close }) {
                   <div className="text-gray-300">Account History</div>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={`${
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
@@ -179,7 +179,7 @@ function SideBarDrawer({ open, close }) {
                   />
                   <div className="text-gray-300">Option Trade</div>
                 </Link>
-              </li>
+              </li> */}
               <li
                 className={`${
                   pathname === "/user" ? "active" : ""
