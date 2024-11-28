@@ -256,18 +256,23 @@ export default function Home() {
                         Investment Details
                       </Typography>
                       <Divider />
-                      <Typography>
-                        <span className="font-extrabold text-gray">
+                      <Typography className="!text-gray-800">
+                        <span className="font-extrabold text-gray-800">
                           Deposit Amount:
                         </span>{" "}
                         ${amount}
                       </Typography>
-                      <Typography>
-                        <span className="font-extrabold text-gray">Coin</span>:{" "}
-                        {coin}
+                      <Typography
+                        sx={{ color: "gray" }}
+                        className="!text-gray-800"
+                      >
+                        <span className="font-extrabold text-gray-800">
+                          Coin
+                        </span>
+                        : {coin}
                       </Typography>
-                      <Typography>
-                        <span className="font-extrabold text-gray">
+                      <Typography className="!text-gray-800">
+                        <span className="font-extrabold text-gray-800">
                           Investment Plan:
                         </span>{" "}
                         {plan}

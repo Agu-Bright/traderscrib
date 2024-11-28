@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Formik } from "formik";
 import { CircularProgress, Box, Stack } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Bounce } from "react-toastify"; // Import the Bounce transition if it's provided by your toast library
 import "react-toastify/dist/ReactToastify.css";
 import { useSession } from "next-auth/react";
@@ -320,6 +320,7 @@ function page() {
             </Formik>
           </div>
         </div>
+        <ToastContainer />
       </div>
     );
 }
