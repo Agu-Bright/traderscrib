@@ -57,8 +57,8 @@ const Navbar = () => {
               })}
             </ul>
             <div className="gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
-              <Link href="/login" className="block hover:text-gray-50">
-                Sign in
+              <Link href="/user/signup" className="block hover:text-gray-50">
+                Sign up
               </Link>
               <NavLink
                 href="/user/login"

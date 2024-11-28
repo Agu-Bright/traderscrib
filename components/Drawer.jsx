@@ -71,7 +71,7 @@ function MuiDrawer({ open, close, session }) {
               ) : (
                 <li>
                   {" "}
-                  <Link className="nav-link" href="/signup">
+                  <Link className="nav-link" href="/user/login">
                     <i className="flaticon-logout"></i>Sign In
                   </Link>
                 </li>
