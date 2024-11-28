@@ -1,7 +1,9 @@
 import { Box, Typography } from "@mui/material";
+import { useRouter } from "@node_modules/next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Buy = ({ title }) => {
+  const router = useRouter();
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -99,12 +101,18 @@ const Buy = ({ title }) => {
               />
             </Box>
             {title === "Buy" && (
-              <button className="mt-4 rounded-2xl bg-green-600 py-2 w-[100%] text-gray-300">
+              <button
+                onClick={() => router.push("/user/investment")}
+                className="mt-4 rounded-2xl bg-green-600 py-2 w-[100%] text-gray-300"
+              >
                 PLACE BUY ORDER
               </button>
             )}
             {title === "Sell" && (
-              <button className="mt-4 rounded-2xl bg-red-600 py-2 w-[100%] text-gray-300">
+              <button
+                onClick={() => router.push("/user/investment")}
+                className="mt-4 rounded-2xl bg-red-600 py-2 w-[100%] text-gray-300"
+              >
                 PLACE SELL ORDER
               </button>
             )}
