@@ -9,7 +9,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import TableList from "./Table";
 
 import React from "react";
 import Image from "next/image";
