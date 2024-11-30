@@ -166,6 +166,26 @@ export default function Home() {
             </Box>
           </Stack>
         </Box>
+        <div
+          style={{
+            width: "70px",
+            height: "70px",
+            borderRadius: "50%",
+            margin: "30px",
+            zIndex: "999",
+            position: "fixed",
+            bottom: 0,
+            right: 0,
+            color: "white",
+          }}
+        >
+          <a href="http://t.me/ForexCribSupportChannel" target="_blank">
+            <img
+              style={{ width: "100%", height: "100%" }}
+              src="/img/telegram.png"
+            />
+          </a>
+        </div>
       </NavPage>
     );
 }

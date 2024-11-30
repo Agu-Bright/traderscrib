@@ -206,7 +206,7 @@ const Card = ({ title, type, deposits }) => {
               <Box sx={{ width: "100%" }} className="mt-3">
                 <select
                   style={{ width: "100%", background: "#4D4D6C" }}
-                  className="rounded-2xl text-white py-2"
+                  className="rounded-2xl text-white py-3 text-sm px-2"
                   value={coin}
                   onChange={(e) => setCoin(e.target.value)}
                 >

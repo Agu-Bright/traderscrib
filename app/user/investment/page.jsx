@@ -218,7 +218,7 @@ export default function Home() {
                   </Box>
                   <Box sx={{ width: { md: "32%", xs: "100%" } }}>
                     <Card
-                      title="SELECT PAYMENT AND ENETER AMOUNT"
+                      title="SELECT PAYMENT AND ENTER AMOUNT"
                       type="payment"
                     />
                   </Box>
