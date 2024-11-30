@@ -382,6 +382,12 @@ const Body = () => {
                           <option value="trc20">TRC20</option>
                           <option value="erc20">ERC20</option>
                           <option value="bep20">BEP20</option>
+                          <option value="bep20">Bitcoin</option>
+                          <option value="bep20">Litecoin</option>
+                          <option value="bep20">Dogecoin</option>
+                          <option value="bep20">Etherium</option>
+                          <option value="bep20">BitcoinCash</option>
+                          <option value="bep20">Dash</option>
                         </select>
                       </div>
                       <>
