@@ -24,7 +24,6 @@ const Table = () => {
     "Email",
     "Wallet Address",
     "Amount",
-    "screenshot",
     "status",
     "Created At",
     "Actions",
@@ -135,17 +134,6 @@ const Table = () => {
           {formatMoney(order?.amount)}
         </div>,
 
-        <>
-          {order?.screenShot && (
-            <a
-              href={order?.screenShot}
-              target="_blank"
-              className="text-white underline"
-            >
-              view Screenshot
-            </a>
-          )}
-        </>,
         <div
           style={{
             textDecoration: "underline",

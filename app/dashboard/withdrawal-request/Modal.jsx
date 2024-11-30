@@ -1431,7 +1431,7 @@ export default function BasicModal({
                 variant="h6"
                 component="h2"
                 className="!text-gray-600"
-                sx = {{color:"gray"}}
+                sx={{ color: "gray" }}
               >
                 Credit Account{" "}
               </Typography>
@@ -1455,7 +1455,7 @@ export default function BasicModal({
               <span style={{ fontWeight: "750" }}>
                 {active?.user?.username}
               </span>{" "}
-              with the sum of ₦
+              with the sum of
               <span style={{ fontWeight: "750" }}>
                 {formatMoney(Number(active?.amount))}
               </span>
