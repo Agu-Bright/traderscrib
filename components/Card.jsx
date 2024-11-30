@@ -1,6 +1,12 @@
 "use client";
 
-import { Box, Typography, Stack, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Stack,
+  IconButton,
+  CircularProgress,
+} from "@mui/material";
 import React, { useContext, useState } from "react";
 import CryptoMarketData from "./MarketValue";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
@@ -27,6 +33,7 @@ const Card = ({ title, type, deposits }) => {
   const [crypto, setCrypto] = useState("bitcoin");
   const [walletAddress, setWalletAddress] = useState("");
   const [amountW, setAmountW] = useState("");
+  const [loading, setLoading] = useState(false);
   const getColor = (status) => {
     if (status === "success") {
       return "green";
@@ -444,7 +451,7 @@ const Card = ({ title, type, deposits }) => {
               justifyContent: "center",
             }}
           >
-            {myWallet.balance === 0 && (
+            {myWallet?.balance === 0 && (
               <Box className="h-[20%]">
                 <IconButton>
                   <ErrorIcon
@@ -454,12 +461,12 @@ const Card = ({ title, type, deposits }) => {
                 </IconButton>
               </Box>
             )}
-            {myWallet.balance === 0 && (
+            {myWallet?.balance === 0 && (
               <Typography className="text-white text-sm text-center">
                 No funds to withdraw. At least $10 balance is needed.
               </Typography>
             )}
-            {myWallet.balance !== 0 && (
+            {myWallet?.balance !== 0 && (
               <Box sx={{ height: "100%", width: "100%" }}>
                 <Box sx={{ width: "100%" }} className="mt-3">
                   <select
@@ -491,7 +498,7 @@ const Card = ({ title, type, deposits }) => {
                   >
                     <input
                       className="py-1"
-                      type="number"
+                      type="text"
                       value={walletAddress}
                       onChange={(e) => setWalletAddress(e.target.value)}
                       style={{ width: "100%", background: "transparent" }}
@@ -556,7 +563,11 @@ const Card = ({ title, type, deposits }) => {
                   }}
                   className="mt-4 rounded-2xl bg-[]-600 py-2 w-[100%] text-white"
                 >
-                  Withdraw{" "}
+                  {loading ? (
+                    <CircularProgress sx={{ color: "white" }} />
+                  ) : (
+                    "Withdraw"
+                  )}
                 </button>
               </Box>
             )}
