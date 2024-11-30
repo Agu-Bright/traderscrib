@@ -13,6 +13,57 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const Table = () => {
   const { formatMoney, formatDateToReadable } = useContext(RestaurantContext);
+
+  const [state, setState] = useState(false);
+  const [state2, setState2] = useState(false);
+
+  const [wallets, setWallets] = useState([]);
+  const [withdraws, setWithdraws] = useState([]);
+  const columns = [
+    "Account Name",
+    "Email",
+    "Wallet Address",
+    "Amount",
+    "screenshot",
+    "status",
+    "Created At",
+    "Actions",
+  ];
+
+  withdraws && console.log(withdraws);
+  state && console.log(state);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await axios.get("/api/deposit/get-withdrawal");
+        setWallets(data?.deposits.reverse());
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [state]);
+
+  const options = {
+    responsive: "standard",
+  };
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [active, setActive] = useState(null);
+  const data = [];
+
+  const getColor = (status) => {
+    if (status === "success") {
+      return "green";
+    }
+    if (status === "pending") {
+      return "orange";
+    }
+    if (status === "rejected") {
+      return "red";
+    }
+  };
+
   const handleCopy = (address) => {
     // const referralCode = session?.user?.referalCode;
     if (address) {
@@ -47,56 +98,6 @@ const Table = () => {
         });
     }
   };
-  const [state, setState] = useState(false);
-  const [state2, setState2] = useState(false);
-
-  const [wallets, setWallets] = useState([]);
-  const [withdraws, setWithdraws] = useState([]);
-  const columns = [
-    "Account Name",
-    "Email",
-    "Payment Method",
-    "Amount",
-    "screenshot",
-    "status",
-    "Created At",
-    "Actions",
-  ];
-
-  withdraws && console.log(withdraws);
-  state && console.log(state);
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await axios.get("/api/deposit/get-withdrawal");
-        setWallets(data?.deposits.reverse());
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [state]);
-
-
-  const options = {
-    responsive: "standard",
-  };
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [active, setActive] = useState(null);
-  const data = [];
-
-  const getColor = (status) => {
-    if (status === "success") {
-      return "green";
-    }
-    if (status === "pending") {
-      return "orange";
-    }
-    if (status === "rejected") {
-      return "red";
-    }
-  };
   wallets &&
     wallets.map((order) =>
       data.push([
@@ -122,7 +123,12 @@ const Table = () => {
         </div>,
 
         order?.user?.email,
-        order?.method,
+        <p
+          style={{ cursor: "pointer", textDecoration: "underline" }}
+          onClick={() => handleCopy(order?.walletAddress)}
+        >
+          {order?.walletAddress}
+        </p>,
         <div>
           {" "}
           <span style={{ color: "black", fontWeight: "800" }}></span>{" "}
