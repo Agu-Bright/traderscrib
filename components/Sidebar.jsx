@@ -278,7 +278,7 @@ const Sidebar = () => {
                   style={{ display: "flex" }}
                 >
                   <Image
-                    src="/img/money-withdrawal.png"
+                    src="/img/deposit.png"
                     alt="deposit"
                     width={20}
                     height={20}
