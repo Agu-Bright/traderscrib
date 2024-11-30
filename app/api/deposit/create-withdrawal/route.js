@@ -47,7 +47,7 @@ export const POST = async (req, res) => {
       );
     }
 
-    if (wallet.balance < Number(amoung)) {
+    if (wallet.balance < Number(body.amount)) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -65,7 +65,7 @@ export const POST = async (req, res) => {
       coin: body.coin,
       amount: Number(body.amount),
       status: "pending",
-      walletAddress: walletAddress,
+      walletAddress: body.walletAddress,
     });
     return new Response(JSON.stringify({ success: true, deposit }), {
       status: 200,

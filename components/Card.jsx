@@ -16,6 +16,7 @@ import TableComponent from "./Table";
 import { Bounce } from "react-toastify"; // Import the Bounce transition if it's provided by your toast library
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import axios from "@node_modules/axios";
 
 const Card = ({ title, type, deposits }) => {
   const {
@@ -96,6 +97,9 @@ const Card = ({ title, type, deposits }) => {
         transition: Bounce,
       });
       setLoading(false);
+      setAmountW("");
+      setWalletAddress("");
+      setCrypto("");
     } catch (error) {
       setLoading(false);
       toast.error(error?.response?.data?.message, {
@@ -564,7 +568,7 @@ const Card = ({ title, type, deposits }) => {
                   className="mt-4 rounded-2xl bg-[]-600 py-2 w-[100%] text-white"
                 >
                   {loading ? (
-                    <CircularProgress sx={{ color: "white" }} />
+                    <CircularProgress sx={{ color: "white" }} size={15} />
                   ) : (
                     "Withdraw"
                   )}
