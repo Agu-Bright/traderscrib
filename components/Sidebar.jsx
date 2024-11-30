@@ -203,7 +203,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/referral" style={{ display: "flex" }}>
                   <Image
                     src="/img/hand-shake.png"
                     alt="deposit"
@@ -219,7 +219,7 @@ const Sidebar = () => {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/deposit" style={{ display: "flex" }}>
+                <Link href="/user/faq" style={{ display: "flex" }}>
                   <Image
                     src="/img/chat.png"
                     alt="deposit"
@@ -230,7 +230,7 @@ const Sidebar = () => {
                   <div className="text-gray-300">FAQ</div>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className={`${
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3 mb-3`}
@@ -245,7 +245,7 @@ const Sidebar = () => {
                   />
                   <div className="text-gray-300">Support</div>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           )}
           {root === "dashboard" && (

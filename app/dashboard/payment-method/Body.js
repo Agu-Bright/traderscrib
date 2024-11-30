@@ -277,7 +277,7 @@ const Body = () => {
                         {session?.user?.role === "admin" && (
                           <span style={{ fontSize: "12px", color: "red" }}>
                             Admin
-                          </span> 
+                          </span>
                         )}{" "}
                       </Typography>
                     </Box>
@@ -310,7 +310,7 @@ const Body = () => {
                               padding: "10px",
                             }}
                           >
-                            <Typography>
+                            <Typography sx={{ color: "gray" }}>
                               Wallet Address:{" "}
                               <span
                                 style={{
@@ -324,7 +324,9 @@ const Body = () => {
                                 {item?.walletAddress}
                               </span>
                             </Typography>
-                            <Typography>Network: {item?.network}</Typography>
+                            <Typography sx={{ color: "gray" }}>
+                              Network: {item?.network}
+                            </Typography>
                             <IconButton
                               onClick={() => {
                                 setActive(item);

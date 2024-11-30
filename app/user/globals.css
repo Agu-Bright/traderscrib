@@ -26,6 +26,10 @@
 @tailwind components;
 @tailwind utilities;
 
+th {
+  background-color: #152953 !important;
+}
+
 .container {
   max-width: 2140px;
 }

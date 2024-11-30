@@ -10,6 +10,10 @@
   border: 15px solid transparent;
 }
 
+th {
+  background-color: #152953 !important;
+}
+
 .tss-hj53wm-MUIDataTableToolbar-titleText {
   color: white;
 }
