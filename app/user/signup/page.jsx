@@ -65,6 +65,7 @@ const countries = [
   "Equatorial Guinea",
   "Eritrea",
   "Estonia",
+  "Eswatini",
   "Ethiopia",
   "Fiji",
   "Finland",
@@ -538,11 +539,20 @@ function page() {
                             onBlur={handleBlur}
                             value={values.country}
                           >
+                            <option
+                              value="United States"
+                              style={{ color: "white" }}
+                            >
+                              United states
+                            </option>
+                            <option value="Nigeria" style={{ color: "white" }}>
+                              Nigeria{" "}
+                            </option>
                             {countries.map((item, index) => (
                               <option
                                 value={item}
                                 key={index}
-                                style={{ color: "white" }}  
+                                style={{ color: "black" }}
                               >
                                 {item}
                               </option>
