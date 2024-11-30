@@ -405,17 +405,21 @@ const Card = ({ title, type, deposits }) => {
               justifyContent: "center",
             }}
           >
-            <Box className="h-[20%]">
-              <IconButton>
-                <ErrorIcon
-                  className="text-white"
-                  sx={{ width: 100, height: 100 }}
-                />
-              </IconButton>
-            </Box>
-            <Typography className="text-white text-sm text-center">
-              No funds to withdraw. At least $10 balance is needed.
-            </Typography>
+            {myWallet.balance === 0 && (
+              <Box className="h-[20%]">
+                <IconButton>
+                  <ErrorIcon
+                    className="text-white"
+                    sx={{ width: 100, height: 100 }}
+                  />
+                </IconButton>
+              </Box>
+            )}
+            {myWallet.balance === 0 && (
+              <Typography className="text-white text-sm text-center">
+                No funds to withdraw. At least $10 balance is needed.
+              </Typography>
+            )}
             {/* <Typography className="text-white p-2 bg-black rounded-2xl mt-5 text-2xl">
               {formatMoney(myWallet?.balance) || 0.0}
             </Typosgraphy> */}
