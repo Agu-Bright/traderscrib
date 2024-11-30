@@ -24,6 +24,9 @@ const Card = ({ title, type, deposits }) => {
     formatDateToReadable,
   } = useContext(RestaurantContext);
   const [active, setActive] = useState("beginner");
+  const [crypto, setCrypto] = useState("bitcoin");
+  const [walletAddress, setWalletAddress] = useState("");
+  const [amountW, setAmountW] = useState("");
   const getColor = (status) => {
     if (status === "success") {
       return "green";
@@ -65,6 +68,42 @@ const Card = ({ title, type, deposits }) => {
     "Status",
     "Created At",
   ];
+
+  const handleWithdrawalRequest = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/deposit/create-withdrawal/", {
+        amount: amountW,
+        walletAddress: walletAddress,
+        coin: crypto,
+      });
+      toast.success("Withdrawal Submited", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      toast.error(error?.response?.data?.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
+  };
 
   if (type === "investment")
     return (
@@ -420,9 +459,107 @@ const Card = ({ title, type, deposits }) => {
                 No funds to withdraw. At least $10 balance is needed.
               </Typography>
             )}
-            {/* <Typography className="text-white p-2 bg-black rounded-2xl mt-5 text-2xl">
-              {formatMoney(myWallet?.balance) || 0.0}
-            </Typosgraphy> */}
+            {myWallet.balance !== 0 && (
+              <Box sx={{ height: "100%", width: "100%" }}>
+                <Box sx={{ width: "100%" }} className="mt-3">
+                  <select
+                    style={{ width: "100%", background: "#4D4D6C" }}
+                    className="rounded-2xl text-white py-3 text-sm px-2"
+                    value={crypto}
+                    onChange={(e) => setCrypto(e.target.value)}
+                  >
+                    <option value="bitcoin">Bitcoin</option>
+                    <option value="litecoin">Litecoin </option>
+                    <option value="dogecoin">Dogecoin </option>
+                    <option value="ethereum">Ethereum </option>
+                    <option value="bitcoin-cash">Bitcoin Cash </option>
+                    <option value="dash">Dash </option>
+                    <option value="usdt-trc20">USDT TRC20 </option>
+                    <option value="tron">Tron </option>
+                    <option value="usd-erc20">USDT ERC20 </option>
+                  </select>
+                </Box>
+
+                <Box className="mt-3">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      background: "#4D4D6C",
+                    }}
+                    className="rounded-2xl text-white py-2 px-1"
+                  >
+                    <input
+                      className="py-1"
+                      type="number"
+                      value={walletAddress}
+                      onChange={(e) => setWalletAddress(e.target.value)}
+                      style={{ width: "100%", background: "transparent" }}
+                      placeholder="Enter Your walletAddress"
+                    />
+                  </div>
+                </Box>
+                <Box className="mt-3">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      background: "#4D4D6C",
+                    }}
+                    className="rounded-2xl text-white py-2 px-1"
+                  >
+                    <Typography className="text-white">$</Typography>
+                    <input
+                      className="py-1"
+                      type="number"
+                      value={amountW}
+                      onChange={(e) => setAmountW(e.target.value)}
+                      style={{ width: "100%", background: "transparent" }}
+                      placeholder="Enter amount 10 - 250000"
+                    />
+                  </div>
+                </Box>
+
+                <button
+                  style={{ background: "#01CACA" }}
+                  onClick={() => {
+                    if (!amountW) {
+                      toast.error("Deposit Amount is required", {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                      });
+                      return;
+                    } else {
+                      if (amountW < 10) {
+                        toast.error("Invald Deposit Amount", {
+                          position: "top-center",
+                          autoClose: 5000,
+                          hideProgressBar: true,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                          theme: "light",
+                          transition: Bounce,
+                        });
+                        return;
+                      }
+                    }
+                    handleWithdrawalRequest();
+                  }}
+                  className="mt-4 rounded-2xl bg-[]-600 py-2 w-[100%] text-white"
+                >
+                  Withdraw{" "}
+                </button>
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>

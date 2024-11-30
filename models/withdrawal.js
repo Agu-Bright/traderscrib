@@ -28,6 +28,9 @@ const withdrawalModel = new mongoose.Schema({
     type: String,
     default: "pending",
   },
+  walletAddress: {
+    type: String,
+  },
   coin: { type: String },
   plan: { type: String },
   createdAt: {
