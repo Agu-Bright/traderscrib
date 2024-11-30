@@ -385,7 +385,7 @@ const Body = () => {
                           <option value="bep20">Bitcoin</option>
                           <option value="bep20">Litecoin</option>
                           <option value="bep20">Dogecoin</option>
-                          <option value="bep20">Etherium</option>
+                          <option value="bep20">Ethereum</option>
                           <option value="bep20">BitcoinCash</option>
                           <option value="bep20">Dash</option>
                         </select>
