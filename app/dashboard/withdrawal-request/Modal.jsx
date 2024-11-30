@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { borderRadius } from "@mui/system";
+import "./style.css";
 import {
   Avatar,
   CircularProgress,
@@ -224,7 +225,6 @@ export default function BasicModal({
   };
 
   const [csvContent, setCsvContent] = React.useState(null);
-  csvContent && console.log(csvContent);
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -362,7 +362,6 @@ export default function BasicModal({
     }
   };
   const [logCategory, setLogCategory] = React.useState();
-  logCategory && console.log("logCat", logCategory);
   React.useEffect(() => {
     if (type === "add-log" || type === "edit-log") {
       (async () => {
@@ -1427,15 +1426,31 @@ export default function BasicModal({
         >
           <Box sx={style}>
             {active?.transactionHash || active?.screenShot ? (
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+                className="!text-gray-600"
+                sx = {{color:"gray"}}
+              >
                 Credit Account{" "}
               </Typography>
             ) : (
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography
+                className="!text-gray-600"
+                id="modal-modal-title"
+                variant="h6"
+                component="h2"
+                sx={{ color: "gray" }}
+              >
                 Confirm Withdrawal{" "}
               </Typography>
             )}
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              className="!text-gray-600"
+              id="modal-modal-description"
+              sx={{ mt: 2, color: "gray" }}
+            >
               Are you sure you want to credit{" "}
               <span style={{ fontWeight: "750" }}>
                 {active?.user?.username}

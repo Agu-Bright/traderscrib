@@ -1432,10 +1432,13 @@ export default function BasicModal({
               </Typography>
             ) : (
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                Confirm Withdrawal{" "}
+                Confirm Deposit{" "}
               </Typography>
             )}
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Typography
+              id="modal-modal-description"
+              sx={{ mt: 2, color: "gray" }}
+            >
               Are you sure you want to credit{" "}
               <span style={{ fontWeight: "750" }}>
                 {active?.user?.username}
