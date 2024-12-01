@@ -14,6 +14,6 @@ const KycModel = new mongoose.Schema({
     default: Date.now,
   },
 });
-const Kyc = mongoose.models.KycModel || mongoose.model("Task", KycModel);
+const Kyc = mongoose.models.KycModel || mongoose.model("Kyc", KycModel);
 
 export default Kyc;
