@@ -12,6 +12,7 @@ import Card from "@components/Card";
 import { toast } from "react-toastify";
 import { Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import KYCPage from "@components/Kyc";
 
 export default function Home() {
   const { data: session, status } = useSession();
@@ -76,12 +77,10 @@ export default function Home() {
                 height={50}
                 className="mr-2"
               />
-              <Typography className="text-white text-2xl">
-                Referal Program{" "}
-              </Typography>
+              <Typography className="text-white text-2xl">KYC </Typography>
             </Box>
             <Box className="w-[100%] mt-4">
-              <Card title="Deposits" type="deposit" deposits={deposits} />
+              <KYCPage />
             </Box>
           </Stack>
         </Box>

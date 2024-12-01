@@ -218,7 +218,7 @@ function SideBarDrawer({ open, close }) {
                   pathname === "/user" ? "active" : ""
                 } text-white mt-3`}
               >
-                <Link href="/user/referral" style={{ display: "flex" }}>
+                <Link href="/user/kyc" style={{ display: "flex" }}>
                   <Image
                     src="/img/hand-shake.png"
                     alt="deposit"
@@ -226,7 +226,7 @@ function SideBarDrawer({ open, close }) {
                     height={20}
                     className="mr-2"
                   />
-                  <div className="text-gray-300">Referral Pogram</div>
+                  <div className="text-gray-300">KYC</div>
                 </Link>
               </li>
               <li
