@@ -1,31 +1,60 @@
-// components/GoogleTranslateDropdown.js
 "use client";
-import { IconButton } from "@node_modules/@mui/material";
+import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import GTranslateIcon from "@mui/icons-material/GTranslate";
-const GoogleTranslateDropdown = ({ translate }) => {
+
+const GoogleTranslateDropdown = () => {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
 
+  // List of languages to display in the dropdown
+  const allowedLanguages = [
+    "en", // English
+    "ja", // Japanese
+    "it", // Italian
+    "es", // Spanish
+    "hu", // Hungarian
+    "pt", // Portuguese
+    "de", // German
+    "fr", // French
+    "vi", // Vietnamese
+  ];
+
   useEffect(() => {
+    // Dynamically load the Google Translate script
     const script = document.createElement("script");
     script.src =
-      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     script.defer = true;
+    script.onload = () => setIsScriptLoaded(true);
+    script.onerror = () => {
+      console.error("Failed to load the Google Translate script.");
+    };
     document.body.appendChild(script);
 
+    // Define the callback function required by Google Translate
     window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        {
-          pageLanguage: "en",
-          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
-        "google_translate_element"
-      );
-      setIsInitialized(true);
+      try {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: "en",
+            includedLanguages: allowedLanguages.join(","), // Restrict languages
+            layout:
+              window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+        setIsInitialized(true);
+      } catch (error) {
+        console.error("Error initializing Google Translate:", error);
+      }
     };
 
-    script.onload = () => setIsScriptLoaded(true);
+    // Cleanup script on unmount
+    return () => {
+      document.body.removeChild(script);
+      delete window.googleTranslateElementInit;
+    };
   }, []);
 
   const handleTranslate = () => {
@@ -35,43 +64,10 @@ const GoogleTranslateDropdown = ({ translate }) => {
   };
 
   return (
-    // <div
-    //   style={{
-    //     visibility: `${translate ? "visible" : "hidden"}`,
-    //     border: "1px solid white",
-    //     height: "100%",
-    //     display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    //   }}
-    // >
-    //   <div>
-    //     <button
-    //       style={{
-    //         display: "none",
-    //         color: "white",
-    //         height: "100%",
-    //         width: "100%",
-    //         background: "white",
-    //       }}
-    //       onClick={handleTranslate}
-    //     >
-    //       Translate
-    //     </button>
-    //     {/* <div
-    //       id="google_translate_element"
-    //       style={{
-    //         display: isInitialized ? "block" : "none",
-    //       }}
-    //     ></div> */}
-    //   </div>
-    // </div>
-
     <>
       <IconButton onClick={handleTranslate}>
         <GTranslateIcon sx={{ color: "white" }} />
       </IconButton>
-
       <div
         id="google_translate_element"
         style={{

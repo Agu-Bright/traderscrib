@@ -151,12 +151,12 @@ export const POST = async (req, res) => {
          
           <div class="content">
           <p>
-          You Deposite of $ ${body?.amount} has been recorded and will be approved by the admin
+          Your Deposit of $${body?.amount} has been recorded and will be approved by the admin.
           </p>   
           </div>
           <div class="footer">
             <p>Thank you for choosing our service!</p>
-          </div>
+          </div>s
         </div>
       </body>
       </html>
