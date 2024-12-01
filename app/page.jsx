@@ -23,7 +23,22 @@ export default function Home() {
         <Pricing />
         <FAQs />
         <Footer />
-        <GoogleTranslateDropdown />
+
+        <div
+          style={{
+            width: "70px",
+            height: "70px",
+            borderRadius: "50%",
+            margin: "30px",
+            zIndex: "999",
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            color: "white",
+          }}
+        >
+          <GoogleTranslateDropdown translate={true} />
+        </div>
       </div>
     </>
   );
