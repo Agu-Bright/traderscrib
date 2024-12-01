@@ -20,7 +20,7 @@ const Testimonial = () => {
     },
     {
       avatar: user2,
-      name: "Sarah T.",
+      name: "Micheal T.",
       title: "Financial Analyst",
       quote:
         "I love how secure and transparent the platform is. I feel confident investing my funds here.",
@@ -48,7 +48,7 @@ const Testimonial = () => {
     },
     {
       avatar: user6,
-      name: "Sophia L.",
+      name: "Philip L.",
       title: "Seasoned Investor",
       quote:
         "ForexCrib truly takes forex trading to the next level. My returns have never been this consistent.",
