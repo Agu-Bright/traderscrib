@@ -2,11 +2,11 @@ import nodemailer from "nodemailer";
 
 export const transporter = nodemailer.createTransport({
   host: "mail.privateemail.com",
-  port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  port: 465,
+  secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASSWORD,
+    user: "support@forexcrib.net",
+    pass: "@forexCribSuppport12",
   },
 });
 
