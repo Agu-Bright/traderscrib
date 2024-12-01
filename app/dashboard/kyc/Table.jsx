@@ -115,12 +115,9 @@ const Table = () => {
             src="/img/man.png"
             alt="avatar"
           />
-
           <span style={{ marginLeft: "5px" }}>{order?.user?.username} </span>
         </div>,
-
         order?.user?.email,
-
         <>
           {order?.image && (
             <a
