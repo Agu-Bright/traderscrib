@@ -1,11 +1,11 @@
-import User from "@models/user";
-import connectDB from "@utils/connectDB";
 import { authOptions } from "@app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import connectDB from "@utils/connectDB";
 import { NextResponse } from "next/server";
 import Kyc from "@models/kyc";
 
-export const POST = async (req, res) => {
+export const GET = async (req) => {
+  //check if user is authenticated
   const session = await getServerSession(
     req,
     {
@@ -20,23 +20,16 @@ export const POST = async (req, res) => {
       { message: "You must be logged in." },
       { status: 401 }
     );
+  } else if (session && session?.user?.role !== "admin") {
+    return Response.json({ message: "Forbidden request" }, { status: 403 });
   }
-
   try {
     await connectDB;
-    const body = await req.json();
-
-    await Kyc.create({
-      user: session?.user?.id,
-      image: body?.image,
-    });
-
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-    });
+    const kycs = await Kyc.find().populate("user");
+    return Response.json({ message: "success", kycs }, { status: 200 });
   } catch (error) {
-    return new Response(
-      JSON.stringify({ success: false, message: error.message }),
+    return Response.json(
+      { success: false, message: error.message },
       { status: 500 }
     );
   }

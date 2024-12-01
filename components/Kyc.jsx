@@ -41,9 +41,8 @@ const KYCPage = () => {
         theme: "light",
         transition: Bounce,
       });
-      setIndex(0);
-      setLoading(false);
       setImage("");
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       toast.error(error?.response?.data?.message, {
