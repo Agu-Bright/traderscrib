@@ -18,6 +18,8 @@ const GoogleTranslateDropdown = () => {
     "de", // German
     "fr", // French
     "vi", // Vietnamese
+    "zh-CN", // Chinese (Simplified)
+    "zh-TW",
   ];
 
   useEffect(() => {
