@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://res.cloudinary.com/dnrqrebbt/image/upload/v1733416275/photos/c8gt5cdwjmjwvwiskzdg.png"
+          content="https://res.cloudinary.com/dnrqrebbt/image/upload/v1733585078/bg_nzwhue.jpg"
         />
 
         {/* Twitter Meta Tags */}
@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="twitter:image"
-          content="https://res.cloudinary.com/dnrqrebbt/image/upload/v1733416275/photos/c8gt5cdwjmjwvwiskzdg.png"
+          content="https://res.cloudinary.com/dnrqrebbt/image/upload/v1733585078/bg_nzwhue.jpg"
         />
 
         {/* <!-- External CSS libraries --> */}
