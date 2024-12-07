@@ -18,6 +18,31 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charSet="utf-8" />
 
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="ForexCrib" />
+        <meta
+          property="og:description"
+          content="Invest in crypto and stock assets."
+        />
+        <meta property="og:url" content="https://forexcrib.net" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dnrqrebbt/image/upload/v1733416275/photos/c8gt5cdwjmjwvwiskzdg.png"
+        />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="ForexCrib" />
+        <meta
+          name="twitter:description"
+          content="Invest in crypto and stock assets."
+        />
+        <meta
+          name="twitter:image"
+          content="https://res.cloudinary.com/dnrqrebbt/image/upload/v1733416275/photos/c8gt5cdwjmjwvwiskzdg.png"
+        />
+
         {/* <!-- External CSS libraries --> */}
         <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
